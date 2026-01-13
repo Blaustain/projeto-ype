@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portal de Etiquetas SEY - Digital</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="./img/Gemini_Generated_Image_58rqsk58rqsk58rq.png">
+    <style>
+        :root {
+            --sap-blue: #005A9E;
+            --tag-blue: #2196F3;
+            --tag-red: #D32F2F;
+            --tag-yellow: #FFEB3B;
+        }
+
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            /* Gradiente Azul solicitado */
+            background-image: url("./img/ype-logo.avif");
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            padding: 20px;
+            color: #333;
+        }
+
+        .main-container {
+            background: #ffffff;
+            width: 100%;
+            max-width: 800px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        /* Tela de Login */
+        #login-screen { padding: 40px; text-align: center; }
+        .input-group { margin-bottom: 20px; text-align: left; }
+        input[type="text"], input[type="number"], textarea, select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        /* Layout dos Formulários */
+        .header-system { background: #f8f9fa; padding: 15px; border-bottom: 2px solid #ddd; display: flex; justify-content: space-between; align-items: center; }
+        .nav-tabs { display: flex; background: #eee; }
+        .nav-tabs button { flex: 1; padding: 15px; border: none; cursor: pointer; font-weight: bold; font-size: 12px; transition: 0.3s; }
+        
+        /* Cores das Abas */
+        .btn-azul { border-bottom: 5px solid var(--tag-blue); }
+        .btn-amarelo { border-bottom: 5px solid var(--tag-yellow); }
+        .btn-vermelho { border-bottom: 5px solid var(--tag-red); }
+
+        .form-section { display: none; padding: 25px; }
+        .active-form { display: block; }
+
+        /* Estilização específica das etiquetas */
+        .card-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 2px solid #eee; }
+        .grid-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .full-width { grid-column: span 2; }
+        .checkbox-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; background: #fdfdfd; padding: 10px; border: 1px solid #eee; }
+        
+        .btn-send { 
+            background: var(--sap-blue); color: white; border: none; 
+            padding: 15px 30px; border-radius: 4px; cursor: pointer; 
+            font-weight: bold; width: 100%; margin-top: 20px;
+        }
+
+        .hidden { display: none; }
+    </style>
+</head>
+<body>
+
+<div class="main-container">
+    <div id="login-screen">
+        <h2 style="color: var(--sap-blue)">Acesso Sistema SEY</h2>
+        <div class="input-group">
+            <label><strong>Matrícula:</strong></label>
+            <input type="number" id="matricula-input" placeholder="Ex: 29577">
+        </div>
+        <button class="btn-send" onclick="acessarSistema(123456)">Entrar no Sistema</button>
+    </div>
+
+    <div id="app-content" class="hidden">
+        <div class="header-system">
+            <strong>SEY - Sistema de Excelência Ypê</strong>
+            <span>Operador: <b id="display-matricula"></b></span>
+        </div>
+        
+        <div class="nav-tabs">
+            <button class="btn-azul" onclick="switchForm('azul')">OPERAÇÃO (AZUL)</button>
+            <button class="btn-amarelo" onclick="switchForm('amarelo')">SEGURANÇA (AMARELA)</button>
+            <button class="btn-vermelho" onclick="switchForm('vermelho')">MANUTENÇÃO (VERMELHA)</button>
+        </div>
+
+        <form id="form-azul" class="form-section active-form">
+            <div class="card-header">
+                <h3 style="color: var(--tag-blue)">Etiqueta de Operação</h3>
+                <span>Nº 180215</span>
+            </div>
+            <div class="grid-fields">
+                <div class="input-group">
+                    <label>Linha:</label>
+                    <input type="text" name="linha" value="ESTEIRA ROSCA">
+                </div>
+                <div class="input-group">
+                    <label>Equipamento:</label>
+                    <input type="text" name="equip" value="10032257">
+                </div>
+                <div class="input-group">
+                    <label>Nº OM:</label>
+                    <input type="text" name="om" value="12624067">
+                </div>
+                <div class="input-group">
+                    <label>Prioridade:</label>
+                    <select name="prioridade">
+                        <option selected>A</option><option>B</option><option>C</option>
+                    </select>
+                </div>
+                <div class="full-width">
+                    <label>Descrição da Anomalia:</label>
+                    <textarea rows="3">MUITA POEIRA NO MOTOR.</textarea>
+                </div>
+                <div class="full-width">
+                    <label>Condições Observadas:</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox"> Condição Básica</label>
+                        <label><input type="checkbox"> LDA Inspeção</label>
+                        <label><input type="checkbox" checked> Fonte de Sujeira</label>
+                        <label><input type="checkbox"> LDA Limpeza</label>
+                        <label><input type="checkbox"> Objeto Desnecessário</label>
+                        <label><input type="checkbox"> LDA Lubrificação</label>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn-send" onclick="enviarSAP('Azul')">Enviar Para  SAP ERP</button>
+        </form>
+
+        <form id="form-amarelo" class="form-section">
+            <div class="card-header">
+                <h3 style="color: #d4af37">Etiqueta Segurança e Ambiental</h3>
+                <span>Nº 44477</span>
+            </div>
+            <div class="grid-fields">
+                <div class="input-group"><label>Linha:</label><input type="text" value="LÍQUIDOS"></div>
+                <div class="input-group"><label>Equipamento:</label><input type="text" value="PIPE RACK"></div>
+                <div class="input-group"><label>Tag Equip:</label><input type="text" value="29143"></div>
+                <div class="input-group"><label>Matrícula Autor:</label><input type="text" value="29143"></div>
+                
+                <div class="full-width">
+                    <label>Saúde e Segurança / Ambiental:</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox"> Vazamento</label>
+                        <label><input type="checkbox"> Emissão Atmosférica</label>
+                        <label><input type="checkbox" checked> Outros</label>
+                        <label><input type="checkbox"> Ruído Ambiental</label>
+                    </div>
+                </div>
+
+                <div class="full-width">
+                    <label>Descrição (Anomalia):</label>
+                    <textarea rows="4">VARIOS PONTOS DE PIPE RACK EM ESCADAS E AREAS OPERACIONAIS SEM SINALIZAÇÃO ZEBRADA.</textarea>
+                </div>
+            </div>
+            <button type="button" class="btn-send" style="background: #d4af37" onclick="enviarSAP('Amarela')">Enviar Para SAP ERP</button>
+        </form>
+
+        <form id="form-vermelho" class="form-section">
+            <div class="card-header">
+                <h3 style="color: var(--tag-red)">Etiqueta de Manutenção</h3>
+                <span>Nº 007153</span>
+            </div>
+            <div class="grid-fields">
+                <div class="input-group"><label>Linha:</label><input type="text" value="CONDENSADO SABÃO I"></div>
+                <div class="input-group"><label>TAG Equipamento:</label><input type="text" value="AIT 08-003"></div>
+                <div class="full-width">
+                    <label>Qual o problema ocorrido?</label>
+                    <textarea rows="4">Aparelho de leitura condutivímetro com leitura errada (divergente).</textarea>
+                </div>
+                <div class="full-width">
+                    <div class="checkbox-group">
+                        <label><input type="checkbox" checked> Condição Básica (CB)</label>
+                        <label><input type="checkbox"> LDA Inspeção</label>
+                        <label><input type="checkbox"> Falha Menor (FM)</label>
+                        <label><input type="checkbox"> LDA Lubrificação</label>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn-send" style="background: var(--tag-red)" onclick="enviarSAP('Vermelha')">Enviar Para SAP ERP</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function acessarSistema() {
+        const mat = document.getElementById('matricula-input').value;
+        if(mat) {
+            document.getElementById('login-screen').classList.add('hidden');
+            document.getElementById('app-content').classList.remove('hidden');
+            document.getElementById('display-matricula').innerText = mat;
+        } else {
+            alert("Por favor, informe a matrícula.");
+        }
+    }
+
+    function switchForm(cor) {
+        document.querySelectorAll('.form-section').forEach(s => s.classList.remove('active-form'));
+        document.getElementById('form-' + cor).classList.add('active-form');
+    }
+
+    function enviarSAP(tipo) {
+        const mat = document.getElementById('display-matricula').innerText;
+        // Simulação de integração SAP via OData ou RFC
+        alert(`Conectando ao SAP Gateway...\n\nEtiqueta ${tipo} enviada com sucesso!\nMatrícula: ${mat}\nStatus: Ordem de Manutenção Gerada.`);
+        console.log("Payload enviado ao SAP para etiqueta " + tipo);
+    }
+</script>
+
+</body>
+</html>
