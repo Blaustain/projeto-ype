@@ -1,4 +1,4 @@
-  <!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
@@ -202,4 +202,117 @@
         <div class="nav-tabs">
             <button class="btn-azul" onclick="switchForm('azul')">OPERAÇÃO (AZUL)</button>
             <button class="btn-amarelo" onclick="switchForm('amarelo')">SEGURANÇA (AMARELA)</button>
-            <button class="btn-vermel  
+            <button class="btn-vermelho" onclick="switchForm('vermelho')">MANUTENÇÃO (VERMELHA)</button>
+        </div>
+
+        <form id="form-azul" class="form-section active-form">
+            <div class="card-header">
+                <h3 style="color: var(--tag-blue); margin:0;">Etiqueta de Operação</h3>
+                <span style="font-weight: bold; color: #666;">Nº 180215</span>
+            </div>
+            <div class="grid-fields">
+                <div class="input-group">
+                    <label>Linha:</label>
+                    <input type="text" value="ESTEIRA ROSCA">
+                </div>
+                <div class="input-group">
+                    <label>Equipamento:</label>
+                    <input type="text" value="10032257">
+                </div>
+                <div class="input-group">
+                    <label>Nº OM:</label>
+                    <input type="text" value="12624067">
+                </div>
+                <div class="input-group">
+                    <label>Prioridade:</label>
+                    <select>
+                        <option selected>A</option><option>B</option><option>C</option>
+                    </select>
+                </div>
+                <div class="full-width">
+                    <label>Descrição da Anomalia:</label>
+                    <textarea rows="3">MUITA POEIRA NO MOTOR.</textarea>
+                </div>
+                <div class="full-width">
+                    <label>Condições Observadas:</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox"> Condição Básica</label>
+                        <label><input type="checkbox"> LDA Inspeção</label>
+                        <label><input type="checkbox" checked> Fonte de Sujeira</label>
+                        <label><input type="checkbox"> LDA Limpeza</label>
+                        <label><input type="checkbox"> Objeto Desnecessário</label>
+                        <label><input type="checkbox"> LDA Lubrificação</label>
+                    </div>
+                </div>
+            </div>
+            <button type="button" class="btn-send" onclick="enviarSAP('Azul')">Enviar Para SAP ERP</button>
+        </form>
+
+        <form id="form-amarelo" class="form-section">
+            <div class="card-header">
+                <h3 style="color: var(--tag-yellow); margin:0;">Segurança e Ambiental</h3>
+                <span style="font-weight: bold; color: #666;">Nº 44477</span>
+            </div>
+            <div class="grid-fields">
+                <div class="input-group"><label>Linha:</label><input type="text" value="LÍQUIDOS"></div>
+                <div class="input-group"><label>Equipamento:</label><input type="text" value="PIPE RACK"></div>
+                <div class="full-width">
+                    <label>Saúde e Segurança / Ambiental:</label>
+                    <div class="checkbox-group">
+                        <label><input type="checkbox"> Vazamento</label>
+                        <label><input type="checkbox"> Emissão Atmosférica</label>
+                        <label><input type="checkbox" checked> Outros</label>
+                        <label><input type="checkbox"> Ruído Ambiental</label>
+                    </div>
+                </div>
+                <div class="full-width">
+                    <label>Descrição:</label>
+                    <textarea rows="3">VARIOS PONTOS SEM SINALIZAÇÃO ZEBRADA.</textarea>
+                </div>
+            </div>
+            <button type="button" class="btn-send" style="background: var(--tag-yellow)" onclick="enviarSAP('Amarela')">Enviar Para SAP ERP</button>
+        </form>
+
+        <form id="form-vermelho" class="form-section">
+            <div class="card-header">
+                <h3 style="color: var(--tag-red); margin:0;">Etiqueta Manutenção</h3>
+                <span style="font-weight: bold; color: #666;">Nº 007153</span>
+            </div>
+            <div class="grid-fields">
+                <div class="input-group"><label>Linha:</label><input type="text" value="CONDENSADO SABÃO I"></div>
+                <div class="input-group"><label>TAG Equipamento:</label><input type="text" value="AIT 08-003"></div>
+                <div class="full-width">
+                    <label>Problema ocorrido:</label>
+                    <textarea rows="3">Aparelho de leitura com erro.</textarea>
+                </div>
+            </div>
+            <button type="button" class="btn-send" style="background: var(--tag-red)" onclick="enviarSAP('Vermelha')">Enviar Para SAP ERP</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function acessarSistema() {
+        const mat = document.getElementById('matricula-input').value;
+        if(mat) {
+            document.getElementById('login-screen').classList.add('hidden');
+            document.getElementById('app-content').classList.remove('hidden');
+            document.getElementById('display-matricula').innerText = mat;
+        } else {
+            alert("Por favor, informe a matrícula.");
+        }
+    }
+
+    function switchForm(cor) {
+        document.querySelectorAll('.form-section').forEach(s => s.classList.remove('active-form'));
+        document.getElementById('form-' + cor).classList.add('active-form');
+    }
+
+    function enviarSAP(tipo) {
+        const mat = document.getElementById('display-matricula').innerText;
+        alert(`Conectando ao SAP Gateway...\n\nEtiqueta ${tipo} enviada com sucesso!\nMatrícula: ${mat}`);
+    }
+</script>
+
+</body>
+</html>
