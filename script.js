@@ -1,5 +1,5 @@
 
-import { SpeedInsights } from "@vercel/speed-insights/next"
+
 
 function acessarSistema() {
     const matricula = document.getElementById('matricula-input').value;
