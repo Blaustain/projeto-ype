@@ -1,0 +1,109 @@
+:root {
+    --sap-blue: #005A9E;
+    --tag-blue: #2196F3;
+    --tag-red: #D32F2F;
+    --tag-yellow: #FFEB3B;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background-image: url("./img/ype-logo.avif");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    color: #333;
+}
+
+.main-container {
+    background: #ffffff;
+    width: 100%;
+    max-width: 800px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    overflow: hidden;
+}
+
+#login-screen { padding: 40px; text-align: center; }
+
+.header-system { 
+    background: #f8f9fa; 
+    padding: 15px; 
+    border-bottom: 2px solid #ddd; 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+.nav-tabs { display: flex; background: #eee; }
+.nav-tabs button { 
+    flex: 1; 
+    padding: 15px; 
+    border: none; 
+    cursor: pointer; 
+    font-weight: bold; 
+    font-size: 11px; 
+    transition: 0.3s; 
+}
+
+.btn-azul { border-bottom: 5px solid var(--tag-blue); }
+.btn-amarelo { border-bottom: 5px solid var(--tag-yellow); }
+.btn-vermelho { border-bottom: 5px solid var(--tag-red); }
+
+.form-section { display: none; padding: 25px; }
+.active-form { display: block; }
+
+.grid-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.full-width { grid-column: span 2; }
+
+input, textarea, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.btn-send { 
+    background: var(--sap-blue); 
+    color: white; 
+    border: none; 
+    padding: 15px; 
+    border-radius: 4px; 
+    cursor: pointer; 
+    font-weight: bold; 
+    width: 100%; 
+    margin-top: 20px;
+}
+
+.hidden { display: none; }
+
+@media (max-width: 650px) {
+    body { padding: 10px; }
+    
+    .header-system {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .nav-tabs { flex-direction: column; }
+    
+    .nav-tabs button {
+        border-bottom: none;
+        border-left: 6px solid transparent;
+        text-align: left;
+    }
+
+    .btn-azul { border-left-color: var(--tag-blue); }
+    .btn-amarelo { border-left-color: var(--tag-yellow); }
+    .btn-vermelho { border-left-color: var(--tag-red); }
+
+    .grid-fields { grid-template-columns: 1fr; } /* Transforma em 1 coluna */
+    .full-width { grid-column: span 1; }
+    
+    .card-header { flex-direction: column; align-items: flex-start; }
+}
