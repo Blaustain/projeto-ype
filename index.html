@@ -1,185 +1,11 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal de Etiquetas SEY - Digital</title>
-    <link rel="icon" type="image/png" sizes="32x32" href="./img/Gemini_Generated_Image_58rqsk58rqsk58rq.png">
-    <style>
-        :root {
-            --sap-blue: #005A9E;
-            --tag-blue: #2196F3;
-            --tag-red: #D32F2F;
-            --tag-yellow: #fbc02d; /* Amarelo um pouco mais escuro para leitura */
-            --bg-gray: #f4f7f6;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-gray);
-            background-image: url("./img/ype-logo.avif");
-            background-repeat: no-repeat;
-            background-size: cover;
-            background-attachment: fixed;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            min-height: 100vh;
-            padding: 15px;
-            color: #333;
-        }
-
-        .main-container {
-            background: rgba(255, 255, 255, 0.96);
-            width: 100%;
-            max-width: 850px;
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.25);
-            overflow: hidden;
-            margin-top: 10px;
-        }
-
-        /* Tela de Login */
-        #login-screen { padding: 40px 20px; text-align: center; }
-        
-        /* Cabeçalho do Sistema */
-        .header-system { 
-            background: #f8f9fa; 
-            padding: 15px 20px; 
-            border-bottom: 2px solid #ddd; 
-            display: flex; 
-            flex-wrap: wrap;
-            justify-content: space-between; 
-            align-items: center; 
-            gap: 10px;
-        }
-
-        /* Abas de Navegação */
-        .nav-tabs { display: flex; flex-wrap: wrap; background: #eee; }
-        .nav-tabs button { 
-            flex: 1; 
-            min-width: 120px;
-            padding: 15px 5px; 
-            border: none; 
-            cursor: pointer; 
-            font-weight: bold; 
-            font-size: 11px; 
-            transition: 0.3s;
-            text-transform: uppercase;
-        }
-        
-        .btn-azul { border-bottom: 5px solid var(--tag-blue); }
-        .btn-amarelo { border-bottom: 5px solid var(--tag-yellow); }
-        .btn-vermelho { border-bottom: 5px solid var(--tag-red); }
-        
-        .nav-tabs button:hover { background: #e0e0e0; }
-
-        /* Formulários */
-        .form-section { display: none; padding: 20px; animation: fadeIn 0.4s; }
-        .active-form { display: block; }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .card-header { 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            margin-bottom: 20px; 
-            padding-bottom: 10px; 
-            border-bottom: 2px solid #eee; 
-        }
-
-        /* Grid Responsivo */
-        .grid-fields { 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; /* 2 colunas no desktop */
-            gap: 15px; 
-        }
-
-        .input-group { margin-bottom: 10px; display: flex; flex-direction: column; }
-        .input-group label { font-weight: 600; margin-bottom: 5px; font-size: 14px; }
-
-        input, textarea, select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 16px; /* Evita zoom automático no iPhone */
-            box-sizing: border-box;
-        }
-
-        .full-width { grid-column: span 2; }
-
-        /* Checkboxes */
-        .checkbox-group { 
-            display: grid; 
-            grid-template-columns: 1fr 1fr; 
-            gap: 12px; 
-            background: #fafafa; 
-            padding: 15px; 
-            border: 1px solid #eee; 
-            border-radius: 6px;
-        }
-        
-        .checkbox-group label { 
-            display: flex; 
-            align-items: center; 
-            font-size: 14px; 
-            cursor: pointer;
-        }
-        
-        .checkbox-group input { width: auto; margin-right: 10px; }
-
-        .btn-send { 
-            background: var(--sap-blue); 
-            color: white; 
-            border: none; 
-            padding: 16px; 
-            border-radius: 6px; 
-            cursor: pointer; 
-            font-weight: bold; 
-            width: 100%; 
-            margin-top: 20px;
-            font-size: 16px;
-            transition: filter 0.2s;
-        }
-        
-        .btn-send:active { filter: brightness(1.2); }
-
-        .hidden { display: none; }
-
-        /* --- MEDIA QUERIES (RESPONSIVIDADE) --- */
-
-        @media (max-width: 600px) {
-            body { padding: 10px; }
-            
-            .header-system { flex-direction: column; text-align: center; }
-            
-            .nav-tabs button { 
-                flex: none; 
-                width: 100%; 
-                border-bottom: none; 
-                border-left: 6px solid #ccc;
-                text-align: left;
-                padding-left: 20px;
-            }
-
-            .btn-azul { border-left-color: var(--tag-blue); }
-            .btn-amarelo { border-left-color: var(--tag-yellow); }
-            .btn-vermelho { border-left-color: var(--tag-red); }
-
-            .grid-fields { grid-template-columns: 1fr; } /* Força 1 coluna no celular */
-            .full-width { grid-column: span 1; }
-            
-            .checkbox-group { grid-template-columns: 1fr; } /* Checkbox em lista única */
-            
-            .card-header { flex-direction: column; align-items: flex-start; gap: 5px; }
-        }
-    </style>
+    <link rel="icon" type="image/png" sizes="32x32" href="./img/icon.png">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -187,7 +13,7 @@
     <div id="login-screen">
         <h2 style="color: var(--sap-blue)">Acesso Sistema SEY</h2>
         <div class="input-group">
-            <label>Matrícula:</label>
+            <label><strong>Matrícula:</strong></label>
             <input type="number" id="matricula-input" placeholder="Ex: 29577">
         </div>
         <button class="btn-send" onclick="acessarSistema()">Entrar no Sistema</button>
@@ -207,27 +33,16 @@
 
         <form id="form-azul" class="form-section active-form">
             <div class="card-header">
-                <h3 style="color: var(--tag-blue); margin:0;">Etiqueta de Operação</h3>
-                <span style="font-weight: bold; color: #666;">Nº 180215</span>
+                <h3 style="color: var(--tag-blue)">Etiqueta de Operação</h3>
+                <span>Nº 180215</span>
             </div>
             <div class="grid-fields">
-                <div class="input-group">
-                    <label>Linha:</label>
-                    <input type="text" value="ESTEIRA ROSCA">
-                </div>
-                <div class="input-group">
-                    <label>Equipamento:</label>
-                    <input type="text" value="10032257">
-                </div>
-                <div class="input-group">
-                    <label>Nº OM:</label>
-                    <input type="text" value="12624067">
-                </div>
+                <div class="input-group"><label>Linha:</label><input type="text" value="ESTEIRA ROSCA"></div>
+                <div class="input-group"><label>Equipamento:</label><input type="text" value="10032257"></div>
+                <div class="input-group"><label>Nº OM:</label><input type="text" value="12624067"></div>
                 <div class="input-group">
                     <label>Prioridade:</label>
-                    <select>
-                        <option selected>A</option><option>B</option><option>C</option>
-                    </select>
+                    <select><option selected>A</option><option>B</option><option>C</option></select>
                 </div>
                 <div class="full-width">
                     <label>Descrição da Anomalia:</label>
@@ -240,8 +55,6 @@
                         <label><input type="checkbox"> LDA Inspeção</label>
                         <label><input type="checkbox" checked> Fonte de Sujeira</label>
                         <label><input type="checkbox"> LDA Limpeza</label>
-                        <label><input type="checkbox"> Objeto Desnecessário</label>
-                        <label><input type="checkbox"> LDA Lubrificação</label>
                     </div>
                 </div>
             </div>
@@ -250,8 +63,8 @@
 
         <form id="form-amarelo" class="form-section">
             <div class="card-header">
-                <h3 style="color: var(--tag-yellow); margin:0;">Segurança e Ambiental</h3>
-                <span style="font-weight: bold; color: #666;">Nº 44477</span>
+                <h3 style="color: #d4af37">Etiqueta Segurança e Ambiental</h3>
+                <span>Nº 44477</span>
             </div>
             <div class="grid-fields">
                 <div class="input-group"><label>Linha:</label><input type="text" value="LÍQUIDOS"></div>
@@ -260,30 +73,29 @@
                     <label>Saúde e Segurança / Ambiental:</label>
                     <div class="checkbox-group">
                         <label><input type="checkbox"> Vazamento</label>
-                        <label><input type="checkbox"> Emissão Atmosférica</label>
                         <label><input type="checkbox" checked> Outros</label>
-                        <label><input type="checkbox"> Ruído Ambiental</label>
+                        <label><input type="checkbox"> Ruído</label>
                     </div>
                 </div>
                 <div class="full-width">
-                    <label>Descrição:</label>
-                    <textarea rows="3">VARIOS PONTOS SEM SINALIZAÇÃO ZEBRADA.</textarea>
+                    <label>Descrição (Anomalia):</label>
+                    <textarea rows="4">SINALIZAÇÃO ZEBRADA AUSENTE.</textarea>
                 </div>
             </div>
-            <button type="button" class="btn-send" style="background: var(--tag-yellow)" onclick="enviarSAP('Amarela')">Enviar Para SAP ERP</button>
+            <button type="button" class="btn-send" style="background: #d4af37" onclick="enviarSAP('Amarela')">Enviar Para SAP ERP</button>
         </form>
 
         <form id="form-vermelho" class="form-section">
             <div class="card-header">
-                <h3 style="color: var(--tag-red); margin:0;">Etiqueta Manutenção</h3>
-                <span style="font-weight: bold; color: #666;">Nº 007153</span>
+                <h3 style="color: var(--tag-red)">Etiqueta de Manutenção</h3>
+                <span>Nº 007153</span>
             </div>
             <div class="grid-fields">
                 <div class="input-group"><label>Linha:</label><input type="text" value="CONDENSADO SABÃO I"></div>
-                <div class="input-group"><label>TAG Equipamento:</label><input type="text" value="AIT 08-003"></div>
+                <div class="input-group"><label>TAG:</label><input type="text" value="AIT 08-003"></div>
                 <div class="full-width">
-                    <label>Problema ocorrido:</label>
-                    <textarea rows="3">Aparelho de leitura com erro.</textarea>
+                    <label>Qual o problema ocorrido?</label>
+                    <textarea rows="4">Aparelho de leitura condutivímetro com erro.</textarea>
                 </div>
             </div>
             <button type="button" class="btn-send" style="background: var(--tag-red)" onclick="enviarSAP('Vermelha')">Enviar Para SAP ERP</button>
@@ -291,28 +103,6 @@
     </div>
 </div>
 
-<script>
-    function acessarSistema() {
-        const mat = document.getElementById('matricula-input').value;
-        if(mat) {
-            document.getElementById('login-screen').classList.add('hidden');
-            document.getElementById('app-content').classList.remove('hidden');
-            document.getElementById('display-matricula').innerText = mat;
-        } else {
-            alert("Por favor, informe a matrícula.");
-        }
-    }
-
-    function switchForm(cor) {
-        document.querySelectorAll('.form-section').forEach(s => s.classList.remove('active-form'));
-        document.getElementById('form-' + cor).classList.add('active-form');
-    }
-
-    function enviarSAP(tipo) {
-        const mat = document.getElementById('display-matricula').innerText;
-        alert(`Conectando ao SAP Gateway...\n\nEtiqueta ${tipo} enviada com sucesso!\nMatrícula: ${mat}`);
-    }
-</script>
-
+<script src="script.js"></script>
 </body>
-</html>             
+</html>
